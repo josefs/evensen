@@ -13,6 +13,15 @@ rrmxmx v =
       v4 = v3 * 0x9FB21C651E98DF25
   in v4 `xor` (shiftR v4 28)
 
+rrxmrrxmsx_0 :: Word64 -> Word64
+rrxmrrxmsx_0 v =
+  let v1 = v `xor` (rotateR v 25 `xor` rotateR v 50)
+      v2 = v1 * 0xA24BAED4963EE407
+      v3 = v2 `xor` (rotateR v 24 `xor` rotateR v 49)
+      v4 = v3 * 0x9FB21C651E98DF25
+  in v4 `xor` (shiftR v4 28)
+
+
 tests = and
   [rrmxmx 0x0000000000000000 == 0x0000000000000000
   ,rrmxmx 0x0000000000000000 == 0x0000000000000000
